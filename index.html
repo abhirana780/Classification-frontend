@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HR Executive AI Simulator | Advanced Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar/Progress -->
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fas fa-chart-network"></i>
+          <span>Exec<span>Analytics</span></span>
+        </div>
+        <nav class="game-nav">
+          <div class="nav-item active" data-level="1">
+            <span class="step-num">01</span> The Executive Scenario
+          </div>
+          <div class="nav-item" data-level="2">
+            <span class="step-num">02</span> Strategic Dataset
+          </div>
+          <div class="nav-item" data-level="3">
+            <span class="step-num">03</span> 3D Visualization
+          </div>
+          <div class="nav-item" data-level="4">
+            <span class="step-num">04</span> The Elbow Method
+          </div>
+          <div class="nav-item" data-level="5">
+            <span class="step-num">05</span> Algorithm Run
+          </div>
+          <div class="nav-item" data-level="6">
+            <span class="step-num">06</span> ROI & Ethics
+          </div>
+        </nav>
+        <div class="stats-panel">
+          <div class="stat-box">
+            <span class="label">Algorithm in Use</span>
+            <span
+              class="value"
+              id="current-algorithm-label"
+              style="font-size: 1.1rem; color: #60a5fa"
+              >K-Means</span
+            >
+          </div>
+          <div class="stat-box mt-4">
+            <span class="label">Target Dataset</span>
+            <span
+              class="value"
+              id="current-dataset-label"
+              style="font-size: 1rem; color: var(--primary-light)"
+              >Pending...</span
+            >
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="top-bar">
+          <div class="progress-container">
+            <div class="progress-bar" id="top-progress"></div>
+          </div>
+          <div class="user-info">
+            <span id="game-status"
+              >Module 1: Unsupervised Learning Masterclass</span
+            >
+          </div>
+        </header>
+
+        <div class="content-wrapper">
+          <!-- Level 1: Scenario -->
+          <section id="level-1" class="level-section active">
+            <div class="hero-card">
+              <h1>Advanced AI for Executives</h1>
+              <p class="subtitle">
+                Deploy machine learning to unlock Financial ROI while managing
+                Ethical AI biases.
+              </p>
+
+              <div class="scenario-box">
+                <div class="scenario-text">
+                  <p>
+                    You are the Chief Analytics Officer for a global Fortune 500
+                    company.
+                  </p>
+                  <p>
+                    <strong>The Opportunity:</strong> You need to segment
+                    thousands of employees into specialized profiles. Treating
+                    them identically costs the company millions in turnover and
+                    lost productivity.
+                  </p>
+                  <p>
+                    <strong>The Challenge:</strong> Real business data isn't
+                    2D—it's highly dimensional. Unsupervised Learning
+                    (Clustering) can find hidden "Centers of Gravity" in this 3D
+                    data. You will also have to select the exact number of
+                    segments using statistical methods, and watch out for hidden
+                    AI bias.
+                  </p>
+                </div>
+                <img
+                  src="assets/dashboard.png"
+                  alt="Strategic Dashboard"
+                  class="scenario-img"
+                  onerror="
+                    this.src =
+                      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2400'
+                  "
+                />
+              </div>
+
+              <div class="footer-actions">
+                <button class="btn btn-primary btn-lg" onclick="nextLevel()">
+                  Start The Simulation <i class="fas fa-play"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Level 2: Choose Dataset -->
+          <section id="level-2" class="level-section">
+            <div class="glass-card text-center">
+              <h2>Select a Business Target</h2>
+              <p
+                style="
+                  margin-bottom: 2rem;
+                  color: var(--text-muted);
+                  font-size: 1.1rem;
+                "
+              >
+                Choose a real-world enterprise dataset containing 3 distinct
+                dimensions.
+              </p>
+
+              <div class="dataset-grid">
+                <div class="dataset-card" onclick="selectDataset('burnout')">
+                  <div
+                    class="icon-wrap"
+                    style="color: var(--low); background: #fef2f2"
+                  >
+                    <i class="fas fa-fire"></i>
+                  </div>
+                  <h3>Burnout & Compensation</h3>
+                  <p>
+                    <strong>Dimensions:</strong> Hours Worked × Satisfaction ×
+                    Salary<br /><br />Find overworked executives, underpaid
+                    staff, or high flight-risk employees.
+                  </p>
+                  <button
+                    class="btn btn-outline full-width"
+                    style="margin-top: 1rem"
+                  >
+                    Deploy Model
+                  </button>
+                </div>
+
+                <div
+                  class="dataset-card"
+                  onclick="selectDataset('performance')"
+                >
+                  <div
+                    class="icon-wrap"
+                    style="color: var(--primary); background: #e0f2fe"
+                  >
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <h3>Performance & Tenure</h3>
+                  <p>
+                    <strong>Dimensions:</strong> Tenure (Yrs) × Performance
+                    (1-5) × Commute<br /><br />Spot rising stars vs. stagnant
+                    veterans costing the company productivity.
+                  </p>
+                  <button
+                    class="btn btn-outline full-width"
+                    style="margin-top: 1rem"
+                  >
+                    Deploy Model
+                  </button>
+                </div>
+
+                <div class="dataset-card" onclick="selectDataset('culture')">
+                  <div
+                    class="icon-wrap"
+                    style="color: var(--medium); background: #fffbeb"
+                  >
+                    <i class="fas fa-project-diagram"></i>
+                  </div>
+                  <h3>Culture "Moons" (Complex)</h3>
+                  <p>
+                    <strong>Dimensions:</strong> Empathy × Ambition × Age<br /><br />A
+                    mathematically complex dataset that traditional K-Means will
+                    fail to solve.
+                  </p>
+                  <button
+                    class="btn btn-outline full-width"
+                    style="margin-top: 1rem"
+                  >
+                    Deploy Model
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Level 3: View 3D Data -->
+          <section id="level-3" class="level-section">
+            <div class="glass-card">
+              <div class="header-with-action">
+                <div>
+                  <h2>Step 1: The Raw 3D Data Sphere</h2>
+                  <p>
+                    Human brains struggle past 2 dimensions. Drag the cube to
+                    rotate the 3D space. Each dot is an employee profile.
+                  </p>
+                </div>
+                <button class="btn btn-primary" onclick="nextLevel()">
+                  Calculate 'Elbow' Math <i class="fas fa-calculator"></i>
+                </button>
+              </div>
+
+              <div class="chart-container" style="height: 500px" id="plotlyRaw">
+                <!-- Plotly 3D injected here -->
+              </div>
+
+              <div class="explanation-box mt-4">
+                <p>
+                  <i class="fas fa-graduation-cap"></i>
+                  <strong>MBA Tip:</strong> AI doesn't see "Burnout" or "High
+                  Performers". It only calculates the geometric distance between
+                  these dots in a multi-dimensional matrix to find clusters that
+                  humans can't see.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Level 4: The Elbow Method -->
+          <section id="level-4" class="level-section">
+            <div class="glass-card">
+              <div class="header-with-action">
+                <div>
+                  <h2>Step 2: The "Elbow Method"</h2>
+                  <p>
+                    We don't guess how many groups exist. The AI ran a
+                    simulation from 1 to 10 clusters and mapped the "Inertia"
+                    (Cluster error/spread). Look for the "bend in the elbow" to
+                    find the optimal number of groups.
+                  </p>
+                </div>
+                <button class="btn btn-primary" onclick="nextLevel()">
+                  Lock Data & Run Model <i class="fas fa-lock"></i>
+                </button>
+              </div>
+
+              <div class="chart-container">
+                <canvas id="elbowChart"></canvas>
+              </div>
+
+              <div class="config-panel mt-4">
+                <h3>Select "K" based on the bend above:</h3>
+                <div class="btn-group mt-2">
+                  <button class="btn btn-outline k-btn" onclick="setK(2)">
+                    K = 2
+                  </button>
+                  <button class="btn btn-primary k-btn" onclick="setK(3)">
+                    K = 3
+                  </button>
+                  <button class="btn btn-outline k-btn" onclick="setK(4)">
+                    K = 4
+                  </button>
+                  <button class="btn btn-outline k-btn" onclick="setK(5)">
+                    K = 5
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Level 5: Algorithm Run -->
+          <section id="level-5" class="level-section">
+            <div class="glass-card">
+              <div class="config-panel">
+                <div class="k-selector">
+                  <h3>Algorithm Selection</h3>
+                  <p>
+                    Not all algorithms are equal. K-Means looks for "spheres",
+                    while DBSCAN looks for "density".
+                  </p>
+                  <select
+                    id="algo-select"
+                    class="custom-select"
+                    onchange="updateAlgoLabel()"
+                  >
+                    <option value="kmeans">K-Means (Industry Standard)</option>
+                    <option value="dbscan">
+                      DBSCAN (Density-Based Spatial Clustering)
+                    </option>
+                  </select>
+                </div>
+                <div class="action-panel">
+                  <button
+                    class="btn btn-accent btn-lg pulse-border"
+                    id="btn-run-clustering"
+                    onclick="runClustering()"
+                  >
+                    <i class="fas fa-brain"></i> Execute Algorithm
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="chart-container mt-4"
+                style="height: 500px"
+                id="plotlyCluster"
+              >
+                <!-- Plotly Clustered injected here -->
+              </div>
+
+              <div class="footer-actions mt-4 hidden" id="proceed-insights">
+                <button class="btn btn-primary btn-lg" onclick="nextLevel()">
+                  Generate Financial & Ethical Report
+                  <i class="fas fa-file-invoice-dollar"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Level 6: ROI & Ethics -->
+          <section id="level-6" class="level-section">
+            <div class="glass-card">
+              <h2>Executive Report: Financial Impact & AI Ethics</h2>
+              <p style="margin-bottom: 2rem">
+                The algorithm has isolated the employee segments. Here are the
+                strategic actions, projected cost savings, and legal/ethical
+                risk checks.
+              </p>
+
+              <!-- Dynamic Insights -->
+              <div class="insights-grid" id="insights-container"></div>
+
+              <div
+                class="summary-box mt-4"
+                style="background: var(--secondary); color: white"
+              >
+                <h3><i class="fas fa-landmark"></i> The CEO Takeaway</h3>
+                <p>
+                  Machine Learning is not magic—it's advanced geometry. As
+                  business leaders, your job is not to code the algorithm, but
+                  to:
+                </p>
+                <ul
+                  style="
+                    margin-left: 1.5rem;
+                    margin-top: 0.5rem;
+                    line-height: 1.6;
+                    color: #cbd5e1;
+                  "
+                >
+                  <li>
+                    Scientifically prove the validity of the data using the
+                    <strong>Elbow Method</strong>.
+                  </li>
+                  <li>
+                    Choose the right tool (K-Means vs DBSCAN) for the business
+                    problem.
+                  </li>
+                  <li>
+                    Audit the output for hidden <strong>Bias</strong> that could
+                    result in PR disasters or lawsuits.
+                  </li>
+                  <li>Measure the <strong>ROI</strong> of the intervention.</li>
+                </ul>
+                <button
+                  class="btn btn-primary full-width mt-4"
+                  onclick="location.reload()"
+                >
+                  Restart Executive Simulation
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <!-- Notification system -->
+    <div id="notification-container"></div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
