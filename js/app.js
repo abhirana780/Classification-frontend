@@ -10,7 +10,7 @@ let gameState = {
     centroids: []
 };
 
-const API_BASE = window.location.origin;
+const API_BASE = "https://classification-backend-jdo1.onrender.com";
 
 // DOM Elements
 const navItems = document.querySelectorAll('.nav-item');

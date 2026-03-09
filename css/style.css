@@ -114,7 +114,17 @@ h1, h2, h3 {
 .custom-select { padding: 0.75rem; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border); font-family: inherit; margin-top: 0.5rem; outline: none; }
 
 /* Charts */
-.chart-container { height: 350px; background: white; padding: 1rem; border-radius: var(--radius-lg); box-shadow: var(--shadow); margin-bottom: 1rem; border: 1px solid var(--border); position:relative; overflow:hidden;}
+.chart-container { 
+    height: 350px; 
+    background: white; 
+    padding: 1rem; 
+    border-radius: var(--radius-lg); 
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.05); 
+    margin-bottom: 1rem; 
+    border: 1px solid rgba(37, 99, 235, 0.1); 
+    position:relative; 
+    overflow:hidden;
+}
 
 /* Insights */
 .insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
